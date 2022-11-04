@@ -1,0 +1,22 @@
+services:
+  mysql-exam:
+    container_name: mysql-exam
+    image: mysql:8
+    ports:
+      - "63306:3306"
+    networks:
+      - my-net
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: examListeCourses
+  
+  php-apache:
+    container_name: php-apache
+    image: azeirotv/exam_docker
+    ports:
+      - "8080:80"
+    networks:
+      - my-net
+
+networks:
+  my-net: {}
